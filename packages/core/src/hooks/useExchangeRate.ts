@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import { DEFAULT_REFRESH_INTERVAL, Currency } from "../types/exchange";
+import { DEFAULT_REFRESH_INTERVAL } from "../types/exchange";
 import { kesToSats, satsToKes, btcToFiat } from "../utils/fx";
 import type { ApiClient } from "../client/api-client";
 import type { QuoteResponse } from "../types/exchange";
@@ -30,16 +30,9 @@ export function useExchangeRate({
     } catch (err) {
       console.error("Failed to fetch exchange rate:", err);
       setError(
-        err instanceof Error ? err.message : "Failed to fetch exchange rate",
+        err instanceof Error ? err.message : "Rates not available",
       );
-      // Set a default rate if fetch fails
-      setQuote({
-        id: "default",
-        from: Currency.KES,
-        to: Currency.BTC,
-        rate: "145000",
-        expiry: new Date(Date.now() + DEFAULT_REFRESH_INTERVAL).toISOString(),
-      });
+      setQuote(null);
     } finally {
       setLoading(false);
     }

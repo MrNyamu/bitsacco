@@ -66,32 +66,7 @@ export class ExchangeRateService {
       };
     } catch (error) {
       console.error("Failed to fetch exchange rate:", error);
-
-      // If we have a cached quote, use it even if expired
-      if (this.cachedQuote) {
-        console.warn("Using expired cached exchange rate due to API failure");
-        return {
-          rate: Number(this.cachedQuote.rate),
-          quote: this.cachedQuote,
-          isFromCache: true,
-        };
-      }
-
-      // Fallback to default rate if no cache available
-      const fallbackQuote: QuoteResponse = {
-        id: "fallback",
-        from: Currency.KES,
-        to: Currency.BTC,
-        rate: "145000", // Reasonable fallback rate
-        expiry: new Date(Date.now() + this.CACHE_DURATION_MS).toISOString(),
-      };
-
-      console.warn("Using fallback exchange rate:", fallbackQuote.rate);
-      return {
-        rate: Number(fallbackQuote.rate),
-        quote: fallbackQuote,
-        isFromCache: false,
-      };
+      throw new Error("Rates not available");
     }
   }
 

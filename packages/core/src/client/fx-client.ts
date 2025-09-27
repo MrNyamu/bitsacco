@@ -1,5 +1,5 @@
 import { BaseApiClient } from "./base-client";
-import { Currency, type QuoteResponse } from "../types/exchange";
+import { type QuoteResponse } from "../types/exchange";
 
 /**
  * FX API client for exchange rate operations
@@ -23,14 +23,7 @@ export class FxApiClient extends BaseApiClient {
     );
 
     if (!response.data) {
-      // Return a default quote if the API fails
-      return {
-        id: "default",
-        from: Currency.KES,
-        to: Currency.BTC,
-        rate: "145000",
-        expiry: new Date(Date.now() + 10 * 60 * 1000).toISOString(),
-      };
+      throw new Error("Rates not available");
     }
 
     return response.data;
