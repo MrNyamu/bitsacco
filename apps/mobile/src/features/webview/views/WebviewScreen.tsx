@@ -35,7 +35,7 @@ import { setTheme } from "../../app/store/appSlice";
 import NoInternetScreen from "../components/NoInternetScreen";
 import useTheme from "../../../hooks/useTheme";
 
-const WebViewScreen: React.FC = () => {
+function WebViewScreen(): JSX.Element {
   const dispatch = useAppDispatch();
   const webViewRef = useRef<WebView>(null);
   const scrollViewRef = useRef<ScrollView>(null);

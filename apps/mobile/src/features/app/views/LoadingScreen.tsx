@@ -5,7 +5,7 @@ import { AppController } from "../controllers/AppController";
 import Logo from "../../../../assets/logo.svg";
 import useTheme from "../../../hooks/useTheme";
 
-const LoadingScreen: React.FC = () => {
+function LoadingScreen(): JSX.Element {
   const dispatch = useAppDispatch();
   const { colors } = useTheme();
 

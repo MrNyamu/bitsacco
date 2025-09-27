@@ -30,7 +30,7 @@ const initialState: WebViewState = {
   isNetworkError: false,
   retryCount: 0,
   isWebViewScrolled: false,
-  currentUrl: "https://app.bitsacco.com/auth?q=login",
+  currentUrl: "https://web.bitsacco.com/auth/login",
   canGoBack: false,
   canGoForward: false,
   lastUpdated: Date.now(),

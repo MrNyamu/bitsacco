@@ -16,13 +16,14 @@ export type RootStackParamList = {
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
-const AppNavigator: React.FC = () => {
+function AppNavigator(): JSX.Element {
   const { isInitialized, isLoading } = useAppSelector((state) => state.app);
   const { isAuthenticated } = useAppSelector((state) => state.auth);
 
   return (
     <NavigationContainer>
       <Stack.Navigator
+        id={undefined}
         screenOptions={{
           headerShown: false,
         }}

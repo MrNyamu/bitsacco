@@ -2,7 +2,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const THEME_STORAGE_KEY = "@bitsacco_theme";
 
-export type ThemeMode = "light" | "dark";
+export type ThemeMode = "dark" | "light";
 
 export class ThemeStorageService {
   /**
